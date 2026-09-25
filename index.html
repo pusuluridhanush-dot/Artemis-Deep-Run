@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Space Explorer Dashboard – A stunning bento grid UI showcasing mission stats, crew profiles, orbital tracking, and deep-space analytics." />
+  <title>Space Explorer Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated star background -->
+  <div class="stars" aria-hidden="true">
+    <div class="stars-layer stars-s"></div>
+    <div class="stars-layer stars-m"></div>
+    <div class="stars-layer stars-l"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-logo">
+      <span class="logo-icon">🛸</span>
+      <span class="logo-text">ASTROX</span>
+    </div>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="#" class="nav-link active">Dashboard</a>
+      <a href="#" class="nav-link">Missions</a>
+      <a href="#" class="nav-link">Crew</a>
+      <a href="#" class="nav-link">Analytics</a>
+    </nav>
+    <div class="header-actions">
+      <span class="status-dot"></span>
+      <span class="status-label">LIVE TRACKING</span>
+    </div>
+  </header>
+
+  <main class="bento-grid" id="dashboard">
+
+    <!-- Card 1: Hero / Mission Banner (large, spans 2 cols × 2 rows on desktop) -->
+    <article class="card card--hero" id="card-hero" aria-label="Current Mission">
+      <div class="card-bg-glow card-bg-glow--purple"></div>
+      <div class="hero-badge">ACTIVE MISSION</div>
+      <h1 class="hero-title">Artemis<br /><span class="hero-accent">Deep Run</span></h1>
+      <p class="hero-sub">Lunar South Pole Survey · Sol 147</p>
+      <div class="hero-stats">
+        <div class="hstat">
+          <span class="hstat-val">384,400<span class="hstat-unit">km</span></span>
+          <span class="hstat-label">Distance to Moon</span>
+        </div>
+        <div class="hstat">
+          <span class="hstat-val">147<span class="hstat-unit">days</span></span>
+          <span class="hstat-label">Mission Duration</span>
+        </div>
+        <div class="hstat">
+          <span class="hstat-val">98.4<span class="hstat-unit">%</span></span>
+          <span class="hstat-label">Systems OK</span>
+        </div>
+      </div>
+      <div class="planet-sphere" aria-hidden="true">
+        <div class="sphere-inner"></div>
+        <div class="sphere-ring"></div>
+        <div class="sphere-glow"></div>
+      </div>
+    </article>
+
+    <!-- Card 2: Crew Profile -->
+    <article class="card card--crew" id="card-crew" aria-label="Commander Profile">
+      <div class="card-bg-glow card-bg-glow--cyan"></div>
+      <div class="crew-avatar" aria-hidden="true">
+        <div class="avatar-img">
+          <div class="avatar-placeholder">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="28" r="16" fill="url(#avatarGrad)"/>
+              <ellipse cx="40" cy="64" rx="24" ry="14" fill="url(#avatarGrad)"/>
+              <defs>
+                <linearGradient id="avatarGrad" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#7c3aed"/>
+                  <stop offset="1" stop-color="#06b6d4"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+      <div class="crew-info">
+        <h2 class="crew-name">Cmdr. Elena Vasquez</h2>
+        <span class="crew-role">Mission Commander</span>
+        <div class="crew-badges">
+          <span class="badge badge--green">Active</span>
+          <span class="badge badge--blue">EVA Certified</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 3: Orbital Speed -->
+    <article class="card card--metric" id="card-speed" aria-label="Orbital Speed">
+      <div class="card-bg-glow card-bg-glow--orange"></div>
+      <div class="metric-icon" aria-hidden="true">🚀</div>
+      <div class="metric-body">
+        <span class="metric-label">Orbital Speed</span>
+        <span class="metric-value">7.66<span class="metric-unit">km/s</span></span>
+        <div class="metric-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
+          <div class="metric-bar-fill" style="--fill:82%"></div>
+        </div>
+        <span class="metric-change metric-change--up">↑ 2.3% vs yesterday</span>
+      </div>
+    </article>
+
+    <!-- Card 4: Atmospheric Composition (chart) -->
+    <article class="card card--chart" id="card-atmo" aria-label="Atmospheric Composition">
+      <div class="card-bg-glow card-bg-glow--teal"></div>
+      <h2 class="card-title">Atmospheric Scan</h2>
+      <p class="card-subtitle">Luna Surface · Sector 7G</p>
+      <div class="donut-wrapper" aria-hidden="true">
+        <svg class="donut-svg" viewBox="0 0 120 120">
+          <circle class="donut-track" cx="60" cy="60" r="46" />
+          <circle class="donut-seg donut-seg--1" cx="60" cy="60" r="46" stroke-dasharray="115 174" stroke-dashoffset="0"/>
+          <circle class="donut-seg donut-seg--2" cx="60" cy="60" r="46" stroke-dasharray="58 231" stroke-dashoffset="-115"/>
+          <circle class="donut-seg donut-seg--3" cx="60" cy="60" r="46" stroke-dasharray="46 243" stroke-dashoffset="-173"/>
+          <circle class="donut-seg donut-seg--4" cx="60" cy="60" r="46" stroke-dasharray="70 219" stroke-dashoffset="-219"/>
+          <text x="60" y="55" text-anchor="middle" class="donut-center-label">0.0002</text>
+          <text x="60" y="70" text-anchor="middle" class="donut-center-sub">atm</text>
+        </svg>
+        <div class="donut-legend">
+          <span class="legend-item"><span class="legend-dot" style="background:#7c3aed"></span>He 40%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#06b6d4"></span>Ne 20%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span>Ar 16%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#10b981"></span>H₂ 24%</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 5: Mission Timeline -->
+    <article class="card card--timeline" id="card-timeline" aria-label="Mission Timeline">
+      <div class="card-bg-glow card-bg-glow--purple"></div>
+      <h2 class="card-title">Mission Log</h2>
+      <ol class="timeline" reversed>
+        <li class="timeline-item timeline-item--done">
+          <span class="tl-dot"></span>
+          <div class="tl-content">
+            <strong>Lunar Orbit Insertion</strong>
+            <time>Day 012 · 14:22 UTC</time>
+          </div>
+        </li>
+        <li class="timeline-item timeline-item--done">
+          <span class="tl-dot"></span>
+          <div class="tl-content">
+            <strong>Descent Module Deploy</strong>
+            <time>Day 031 · 08:07 UTC</time>
+          </div>
+        </li>
+        <li class="timeline-item timeline-item--active">
+          <span class="tl-dot"></span>
+          <div class="tl-content">
+            <strong>Surface Survey Phase II</strong>
+            <time class="active-time">IN PROGRESS</time>
+          </div>
+        </li>
+        <li class="timeline-item timeline-item--upcoming">
+          <span class="tl-dot"></span>
+          <div class="tl-content">
+            <strong>Sample Return Launch</strong>
+            <time>Day 180 · TBD</time>
+          </div>
+        </li>
+      </ol>
+    </article>
+
+    <!-- Card 6: Battery / Power -->
+    <article class="card card--metric" id="card-power" aria-label="Power Systems">
+      <div class="card-bg-glow card-bg-glow--green"></div>
+      <div class="metric-icon" aria-hidden="true">⚡</div>
+      <div class="metric-body">
+        <span class="metric-label">Solar Power</span>
+        <span class="metric-value">91<span class="metric-unit">%</span></span>
+        <div class="metric-bar" role="progressbar" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100">
+          <div class="metric-bar-fill" style="--fill:91%"></div>
+        </div>
+        <span class="metric-change metric-change--up">↑ Optimal generation</span>
+      </div>
+    </article>
+
+    <!-- Card 7: Satellite Tracker (wide card) -->
+    <article class="card card--tracker" id="card-tracker" aria-label="Satellite Tracker">
+      <div class="card-bg-glow card-bg-glow--blue"></div>
+      <h2 class="card-title">Live Orbital Map</h2>
+      <div class="orbital-map" aria-label="Orbital path visualization">
+        <div class="orbit-ring orbit-ring--1" aria-hidden="true"></div>
+        <div class="orbit-ring orbit-ring--2" aria-hidden="true"></div>
+        <div class="orbit-ring orbit-ring--3" aria-hidden="true"></div>
+        <div class="orbit-center" aria-hidden="true">
+          <div class="orbit-planet"></div>
+        </div>
+        <div class="orbit-sat orbit-sat--1" aria-hidden="true"><div class="sat-dot"></div></div>
+        <div class="orbit-sat orbit-sat--2" aria-hidden="true"><div class="sat-dot sat-dot--small"></div></div>
+        <div class="orbit-sat orbit-sat--3" aria-hidden="true"><div class="sat-dot sat-dot--tiny"></div></div>
+      </div>
+      <div class="tracker-info">
+        <div class="tracker-stat">
+          <span class="ts-val">3</span>
+          <span class="ts-label">Active Sats</span>
+        </div>
+        <div class="tracker-stat">
+          <span class="ts-val">99.1%</span>
+          <span class="ts-label">Coverage</span>
+        </div>
+        <div class="tracker-stat">
+          <span class="ts-val">12ms</span>
+          <span class="ts-label">Latency</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 8: Temperature -->
+    <article class="card card--metric" id="card-temp" aria-label="Surface Temperature">
+      <div class="card-bg-glow card-bg-glow--orange"></div>
+      <div class="metric-icon" aria-hidden="true">🌡️</div>
+      <div class="metric-body">
+        <span class="metric-label">Surface Temp</span>
+        <span class="metric-value">-173<span class="metric-unit">°C</span></span>
+        <div class="metric-bar" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
+          <div class="metric-bar-fill metric-bar-fill--cold" style="--fill:15%"></div>
+        </div>
+        <span class="metric-change metric-change--down">Night side · Shadow zone</span>
+      </div>
+    </article>
+
+    <!-- Card 9: Quote / Inspiration -->
+    <article class="card card--quote" id="card-quote" aria-label="Mission Quote">
+      <div class="card-bg-glow card-bg-glow--violet"></div>
+      <blockquote class="quote-text">
+        "That's one small step for man, one giant leap for mankind."
+      </blockquote>
+      <cite class="quote-author">— Neil Armstrong, Apollo 11</cite>
+      <div class="quote-stars" aria-hidden="true">✦ ✧ ✦</div>
+    </article>
+
+    <!-- Card 10: Communication Signal -->
+    <article class="card card--signal" id="card-signal" aria-label="Communication Signal">
+      <div class="card-bg-glow card-bg-glow--cyan"></div>
+      <h2 class="card-title">Deep Space Link</h2>
+      <div class="signal-bars" aria-label="Signal strength: 4 of 5 bars">
+        <div class="bar bar--1 bar--active"></div>
+        <div class="bar bar--2 bar--active"></div>
+        <div class="bar bar--3 bar--active"></div>
+        <div class="bar bar--4 bar--active"></div>
+        <div class="bar bar--5"></div>
+      </div>
+      <span class="signal-label">Signal: <strong>STRONG</strong></span>
+      <div class="signal-wave" aria-hidden="true">
+        <div class="wave-line"></div>
+        <div class="wave-line wave-line--2"></div>
+        <div class="wave-line wave-line--3"></div>
+      </div>
+    </article>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 ASTROX Mission Control · All Systems Nominal</span>
+    <span class="footer-coord">LAT 89.4°S · LON 42.1°E · ALT 1842m</span>
+  </footer>
+
+</body>
+</html>
